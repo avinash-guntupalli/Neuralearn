@@ -1,0 +1,122 @@
+Skip to main content
+Tensor.ipynb
+Tensor.ipynb_Notebook unstarred
+Last saved at 11:38 PM
+[2]
+0s
+import tensorflow as tf
+tensor_zero_d = tf.constant(4)
+print(tensor_zero_d)
+
+
+tf.Tensor(4, shape=(), dtype=int32)
+[3]
+tensor_one_d = tf.constant([2,0,-3])
+print(tensor_one_d)
+# one d tensor
+
+tf.Tensor([ 2  0 -3], shape=(3,), dtype=int32)
+[5]
+tensor_two_d = tf.constant([[1,2,0],[1,2,3],[3,4,5],[8,3,2]])
+print(tensor_two_d)
+# two d tensor
+tf.Tensor(
+[[1 2 0]
+ [1 2 3]
+ [3 4 5]
+ [8 3 2]], shape=(4, 3), dtype=int32)
+[6]
+0s
+tensor_three_d = tf.constant([
+    [[1,2,3],[2,3,4]],
+    [[3,4,5],[4,5,6]],
+    [[2,4,6],[1,8,6]]
+])
+print(tensor_three_d)
+tf.Tensor(
+[[[1 2 3]
+  [2 3 4]]
+
+ [[3 4 5]
+  [4 5 6]]
+
+ [[2 4 6]
+  [1 8 6]]], shape=(3, 2, 3), dtype=int32)
+[9]
+0s
+print(tensor_three_d.ndim, tensor_three_d.shape)
+3 (3, 2, 3)
+[10]
+0s
+tensor_to_cast = tf.constant([2,3.,4.09])
+casted_tensor = tf.cast(tensor_to_cast,dtype= tf.int32)
+
+print(tensor_to_cast, casted_tensor)
+tf.Tensor([2.   3.   4.09], shape=(3,), dtype=float32) tf.Tensor([2 3 4], shape=(3,), dtype=int32)
+[11]
+0s
+tensor_string = tf.constant(["hello world",'hi'])
+print(tensor_string)
+tf.Tensor([b'hello world' b'hi'], shape=(2,), dtype=string)
+[12]
+0s
+import numpy as np
+np_array = np.array([1,2,4])
+print(np_array)
+[1 2 4]
+[14]
+0s
+# converting the array to tensor
+con_tensor = tf.convert_to_tensor(np_array)
+print(con_tensor)
+tf.Tensor([1 2 4], shape=(3,), dtype=int64)
+[19]
+0s
+# eye method
+
+eye_tensor = tf.eye(num_rows=3,
+                    num_columns=5,
+                    batch_shape=[2,],
+                    dtype=tf.dtypes.float32,
+                    name =None)
+print(3*eye_tensor)
+
+tf.Tensor(
+[[[3. 0. 0. 0. 0.]
+  [0. 3. 0. 0. 0.]
+  [0. 0. 3. 0. 0.]]
+
+ [[3. 0. 0. 0. 0.]
+  [0. 3. 0. 0. 0.]
+  [0. 0. 3. 0. 0.]]], shape=(2, 3, 5), dtype=float32)
+[20]
+0s
+fill_tensor = tf.fill(
+    [1,3,4],5,name=None
+)
+print(fill_tensor)
+tf.Tensor(
+[[[5 5 5 5]
+  [5 5 5 5]
+  [5 5 5 5]]], shape=(1, 3, 4), dtype=int32)
+[21]
+# random distribution
+[34]
+0s
+from pickle import NONE
+# random uniform distribution
+
+random_tensor = tf.random.uniform(
+    [5,],
+    minval=90,
+    maxval=100,
+    dtype=tf.dtypes.float32,
+    seed=None,
+    name=None
+)
+
+print(random_tensor)
+tf.Tensor([92.14585  91.62616  91.655594 97.40715  90.0958  ], shape=(5,), dtype=float32)
+[ ]
+Colab paid products - Cancel contracts here
+Connected to Python 3 Google Compute Engine backend
